@@ -1,0 +1,20 @@
+:root {
+	--background-color: #222831;
+	--dark-color: #204051;
+	--standard-color: #3b6978;
+	--light-color: #fbc687;
+
+	font-size: 62.5%;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+@media (max-width: 700px) {
+	:root {
+		font-size: 60%;
+	}
+}
