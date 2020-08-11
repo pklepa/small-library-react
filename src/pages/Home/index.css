@@ -26,6 +26,12 @@ main {
 	margin: 120px 0;
 }
 
+.cards-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
 @media (max-width: 700px) {
 	main {
 		width: 100%;
