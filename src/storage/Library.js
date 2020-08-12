@@ -61,7 +61,43 @@ const Library = (() => {
     bookshelf = updatedBookshelf;
   }
 
-  return { getAllBooks, addBook, deleteBook, editBook, changeBookReadStatus };
+  function initializeLibrary() {
+    if (!localStorage.getItem("@small-lib-react/book1")) {
+      addBook("Budapeste", "Chico Buarque de Holanda", 174, true);
+      addBook("Estorvo", "Chico Buarque de Holanda", 203, false);
+      addBook("Pale Blue Dot", "Carl Sagan", 421, true);
+    } else {
+      for (let i = 1; i <= localStorage.length; i++) {
+        let bookArr = JSON.parse(
+          localStorage.getItem(`@small-lib-react/book${i}`)
+        );
+        addBook(bookArr[0], bookArr[1], bookArr[2], bookArr[3]);
+      }
+    }
+  }
+
+  function saveLibrary() {
+    localStorage.clear();
+
+    let i = 1;
+    bookshelf.forEach((book) => {
+      localStorage.setItem(
+        `@small-lib-react/book${i}`,
+        JSON.stringify(Object.values(book))
+      );
+      i++;
+    });
+  }
+
+  return {
+    initializeLibrary,
+    saveLibrary,
+    getAllBooks,
+    addBook,
+    deleteBook,
+    editBook,
+    changeBookReadStatus,
+  };
 })();
 
 export default Library;

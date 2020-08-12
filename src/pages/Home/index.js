@@ -19,12 +19,18 @@ function Home() {
     setShowModal(!showModal);
   }
 
-  useEffect(() => {
-    Library.addBook("Budapeste", "Chico Buarque de Holanda", 174, true);
-    Library.addBook("Estorvo", "Chico Buarque de Holanda", 203, false);
-    Library.addBook("Pale Blue Dot", "Carl Sagan", 421, true);
+  function handleUnload() {
+    Library.saveLibrary();
+  }
 
+  useEffect(() => {
+    Library.initializeLibrary();
     setBookLibrary(Library.getAllBooks());
+
+    window.addEventListener("beforeunload", handleUnload);
+    return () => {
+      window.removeEventListener("beforeunload", handleUnload);
+    };
   }, []);
 
   return (
