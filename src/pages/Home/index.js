@@ -11,11 +11,12 @@ import Modal from "../../components/Modal";
 import Library from "../../storage/Library";
 
 function Home() {
-  const [showModal, toggleShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [bookLibrary, setBookLibrary] = useState([]);
+  const [bookToEdit, setBookToEdit] = useState({});
 
-  function handleClick() {
-    toggleShowModal(!showModal);
+  function toggleModal() {
+    setShowModal(!showModal);
   }
 
   useEffect(() => {
@@ -31,7 +32,7 @@ function Home() {
       <Header />
 
       <main>
-        <button className="add-book" id="btn-add-form" onClick={handleClick}>
+        <button className="add-book" id="btn-add-form" onClick={toggleModal}>
           <span>add_circle</span>Add a book
         </button>
 
@@ -42,6 +43,8 @@ function Home() {
                 key={book.id}
                 bookObj={book}
                 setBookLibrary={setBookLibrary}
+                setBookToEdit={setBookToEdit}
+                toggleModal={toggleModal}
               />
             );
           })}
@@ -50,8 +53,10 @@ function Home() {
 
       <Modal
         showModal={showModal}
-        closeModal={handleClick}
+        toggleModal={toggleModal}
         setBookLibrary={setBookLibrary}
+        bookToEdit={bookToEdit}
+        setBookToEdit={setBookToEdit}
       />
     </div>
   );

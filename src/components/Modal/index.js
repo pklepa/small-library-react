@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "./index.css";
 
 import Library from "../../storage/Library";
 
 function Modal(props) {
-  const { showModal, closeModal, setBookLibrary } = props;
+  const {
+    showModal,
+    toggleModal,
+    setBookLibrary,
+    bookToEdit,
+    setBookToEdit,
+  } = props;
 
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -14,33 +20,53 @@ function Modal(props) {
 
   const hide = showModal ? "" : "hide";
 
+  useEffect(() => {
+    setTitle(bookToEdit.title);
+    setAuthor(bookToEdit.author);
+    setPages(bookToEdit.pages);
+    setReadStatus(bookToEdit.isRead);
+  }, [bookToEdit]);
+
   function handleSubmit(e) {
     e.preventDefault();
 
-    Library.addBook(title, author, pages, readStatus);
+    if (!bookToEdit.id) {
+      Library.addBook(title, author, pages, readStatus);
+    } else {
+      Library.editBook({
+        title,
+        author,
+        pages,
+        isRead: readStatus,
+        id: bookToEdit.id,
+      });
+    }
+
     setBookLibrary(Library.getAllBooks());
 
     clearModal();
-    closeModal();
+    toggleModal();
   }
 
   function clearModal() {
-    setTitle("");
-    setAuthor("");
-    setPages("");
-    setReadStatus(false);
+    setBookToEdit({
+      title: "",
+      author: "",
+      pages: "",
+      isRead: false,
+    });
   }
 
   return (
     <div id="modal" className={hide}>
       <div className="content">
         <div className="header">
-          <h1>Add a book</h1>
+          <h1>{bookToEdit.id ? "Edit book" : "Add a book"}</h1>
           <button
             id="btn-modal-close"
             onClick={() => {
               clearModal();
-              closeModal();
+              toggleModal();
             }}
           >
             Close
@@ -97,7 +123,7 @@ function Modal(props) {
           </div>
 
           <button id="btn-modal-add" type="submit">
-            Add book
+            {bookToEdit.id ? "Edit book" : "Add book"}
           </button>
         </form>
       </div>

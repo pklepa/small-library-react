@@ -33,17 +33,35 @@ const Library = (() => {
     bookshelf = updatedBookshelf;
   }
 
-  function changeBookReadStatus(id) {
-    bookshelf.map((book) => {
-      if (book.id === id) {
-        return { ...book, id: !book.id };
+  function editBook(updatedBook) {
+    const updatedBookshelf = bookshelf.map((book) => {
+      if (book.id === updatedBook.id) {
+        const { title, author, pages, isRead } = updatedBook;
+        book.title = title;
+        book.author = author;
+        book.pages = pages;
+        book.isRead = isRead;
       }
 
       return book;
     });
+
+    bookshelf = updatedBookshelf;
   }
 
-  return { getAllBooks, addBook, deleteBook, changeBookReadStatus };
+  function changeBookReadStatus(id) {
+    const updatedBookshelf = bookshelf.map((book) => {
+      if (book.id === id) {
+        book.isRead = !book.isRead;
+      }
+
+      return book;
+    });
+
+    bookshelf = updatedBookshelf;
+  }
+
+  return { getAllBooks, addBook, deleteBook, editBook, changeBookReadStatus };
 })();
 
 export default Library;

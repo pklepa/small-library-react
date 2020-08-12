@@ -4,7 +4,7 @@ import "./index.css";
 
 import Library from "../../storage/Library";
 
-function Card({ bookObj, setBookLibrary }) {
+function Card({ bookObj, setBookLibrary, setBookToEdit, toggleModal }) {
   const { title, author, pages, isRead, id } = bookObj;
 
   function handleChange() {
@@ -19,6 +19,12 @@ function Card({ bookObj, setBookLibrary }) {
     setBookLibrary(Library.getAllBooks());
   }
 
+  function handleEdit() {
+    setBookToEdit(bookObj);
+
+    toggleModal();
+  }
+
   return (
     <div className="card">
       <div className="card-header">
@@ -28,9 +34,9 @@ function Card({ bookObj, setBookLibrary }) {
       <div className="card-footer">
         <div className="buttons">
           <button onClick={handleDelete}>delete</button>
-          <button onClick={handleDelete}>edit</button>
+          <button onClick={handleEdit}>edit</button>
         </div>
-        {pages && <h4>{pages} pages</h4>}
+        {pages ? <h4>{pages} pages</h4> : <p></p>}
         <div className="checkbox-container">
           <div className="checkbox">
             <label htmlFor="read-checkbox">read</label>
@@ -38,7 +44,7 @@ function Card({ bookObj, setBookLibrary }) {
               id="test"
               type="checkbox"
               name="read-checkbox"
-              defaultChecked={isRead}
+              checked={isRead}
               onChange={handleChange}
             />
           </div>
