@@ -25,3 +25,9 @@ footer p a {
 	color: lightcoral;
 	font-weight: bold;
 }
+
+footer p a:hover {
+	height: 10px;
+	background-color: lightcoral;
+	color: white;
+}
