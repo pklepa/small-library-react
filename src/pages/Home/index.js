@@ -5,10 +5,11 @@ import "../../assets/styles/reset.css";
 import "../../assets/styles/global.css";
 import "./index.css";
 
+import Library from "../../storage/Library";
 import Header from "../../components/Header";
 import Card from "../../components/Card";
 import Modal from "../../components/Modal";
-import Library from "../../storage/Library";
+import Footer from "../../components/Footer";
 
 function Home() {
   const [showModal, setShowModal] = useState(false);
@@ -56,6 +57,8 @@ function Home() {
           })}
         </div>
       </main>
+
+      <Footer />
 
       <Modal
         showModal={showModal}

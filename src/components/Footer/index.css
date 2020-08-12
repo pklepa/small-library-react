@@ -1,0 +1,27 @@
+footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+
+	width: 100%;
+
+	display: flex;
+	justify-content: center;
+
+	background-color: var(--background-color);
+	border-top: 2px solid var(--dark-color);
+}
+
+footer p {
+	font-family: 'Glegoo', serif;
+	font-size: 1.6rem;
+	color: white;
+
+	padding: 0.5em 0;
+	line-height: 2em;
+}
+
+footer p a {
+	color: lightcoral;
+	font-weight: bold;
+}
