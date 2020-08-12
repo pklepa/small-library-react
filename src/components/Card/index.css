@@ -2,6 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: space-between;
 	text-align: center;
 
 	width: 300px;
@@ -11,11 +12,9 @@
 	background-color: var(--light-color);
 	border-radius: 4px;
 	box-shadow: 0 0 20px 2px #000000c5;
-
-	position: relative;
 }
 
-.card h2 {
+.card .card-header h2 {
 	margin: 15px 10px 10px;
 
 	font-family: 'Cinzel', serif;
@@ -24,21 +23,54 @@
 	color: var(--background-color);
 }
 
-.card h3 {
+.card .card-header h3 {
 	color: var(--background-color);
 }
 
-.card h4 {
-	position: absolute;
+.card .card-footer {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	align-items: center;
 
-	bottom: 15px;
+	width: 100%;
+	padding: 0 10px 8px 8px;
 }
 
-.card .checkbox {
-	position: absolute;
-	bottom: 8px;
-	right: 15px;
+.card .card-footer .buttons {
+	display: flex;
+	text-align: start;
+}
 
+.card .card-footer .buttons button {
+	font-family: 'Material Icons';
+	font-size: 24px;
+	color: var(--background-color);
+	opacity: 40%;
+
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+
+.card .card-footer .buttons button:hover {
+	color: rgb(153, 33, 33);
+	opacity: 100%;
+}
+
+.card .card-footer .buttons button:active {
+	color: var(--background-color);
+}
+
+.card .card-footer h4 {
+	color: var(--background-color);
+}
+
+.card .card-footer .checkbox-container {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.card .card-footer .checkbox {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -47,28 +79,4 @@
 .card .checkbox label {
 	font-size: 14px;
 	margin-bottom: 5px;
-}
-
-.card button {
-	font-family: 'Material Icons';
-	font-size: 24px;
-	color: var(--background-color);
-	opacity: 40%;
-
-	position: absolute;
-	bottom: 14px;
-	left: 15px;
-
-	border: none;
-	background: none;
-	cursor: pointer;
-}
-
-.card button:hover {
-	color: rgb(153, 33, 33);
-	opacity: 100%;
-}
-
-.card a:active {
-	color: var(--background-color);
 }

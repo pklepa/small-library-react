@@ -21,22 +21,29 @@ function Card({ bookObj, setBookLibrary }) {
 
   return (
     <div className="card">
-      <h2>{title}</h2>
-      <h3>{author}</h3>
-      {pages && <h4>{pages} pages</h4>}
-      <div className="checkbox">
-        <label htmlFor="read-checkbox">read</label>
-        <input
-          id="test"
-          type="checkbox"
-          name="read-checkbox"
-          defaultChecked={isRead}
-          onChange={handleChange}
-        />
+      <div className="card-header">
+        <h2>{title}</h2>
+        <h3>{author}</h3>
       </div>
-      <button onClick={handleDelete} className="btn-remove">
-        delete
-      </button>
+      <div className="card-footer">
+        <div className="buttons">
+          <button onClick={handleDelete}>delete</button>
+          <button onClick={handleDelete}>edit</button>
+        </div>
+        {pages && <h4>{pages} pages</h4>}
+        <div className="checkbox-container">
+          <div className="checkbox">
+            <label htmlFor="read-checkbox">read</label>
+            <input
+              id="test"
+              type="checkbox"
+              name="read-checkbox"
+              defaultChecked={isRead}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
