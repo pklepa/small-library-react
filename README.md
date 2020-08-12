@@ -1,68 +1,115 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# small-library-react
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+[Odin] Recreation of my own [small-library](https://github.com/pklepa/small-library) project, this time using ReactJS.
 
-### `npm start`
+Implementation of a basic system for book tracking. Make your own reading list and mark them complete as you finish. Book data is stored locally on your browser via Local Browser integration.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![SS_small-library-react_web](https://user-images.githubusercontent.com/22618438/90070807-d1d31e80-dcca-11ea-8487-c0b36105a5c0.png)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+![SS_small-library-react_mobile](https://user-images.githubusercontent.com/22618438/90070994-31c9c500-dccb-11ea-8088-e6b12e52dfd4.png)
 
-### `npm test`
+> See it live on [pklepa.github.io/small-library-react](https://pklepa.github.io/small-library-react/)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Objectives
 
-### `npm run build`
+The main objective of this project is to familiarize and apply the following:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Recreate the [small-library project](https://github.com/pklepa/small-library) using React, originally done using Vanilla JS.
+- Practice React development, applying concepts as Reusable Components, State, Props and Lifecycle of components.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- Make use of the modern React syntax of Hooks, as in useState() and useEffect()
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Further improve JSX proficiency
 
-### `npm run eject`
+- Rethink the design of an existing application, making it better suited for scaling and adding new features
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Port the existing design to be Mobile-friendly
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Development
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Javascript Framework
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- [React](https://github.com/facebook/create-react-app)
 
-## Learn More
+### Libraries, extensions and tools
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [ESLint](https://eslint.org/) - A linter tool to standardize code
+- [Prettier](https://prettier.io/) - Code formatter
+- [Github Pages](https://pages.github.com/) - Hosting
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Step-by-step setup
 
-### Code Splitting
+Here's a simple guide to get the basic environment for a React application.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+1. Bootstrap the create-react-app
 
-### Analyzing the Bundle Size
+   ```
+     npx create-react-app small-library-react
+   ```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+2. Clear all of the src/ folder
 
-### Making a Progressive Web App
+   ```
+     cd src
+     rm -f *
+   ```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+3. Setup git and github
 
-### Advanced Configuration
+   3.1. Initialize local repo and stage/commit files to it:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+   ```
+     cd small-library-react
+     git init
+     git add .
+     git commit -m "First commit"
+   ```
 
-### Deployment
+   3.1. Create a github repo.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+   3.2. Link the remote repository with your local one:
 
-### `npm run build` fails to minify
+   ```
+     git remote add origin {REMOTE-REPOSITORY-URL}
+     git remote -v
+   ```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+   3.4. Push changes to remote
+
+   ```
+    git push origin master
+   ```
+
+4. Add and configure ESLint and Prettier
+
+   4.1. Add a `.eslintrc` file to extend rules from react-app. It should look like this:
+
+   ```
+    {
+      "extends": ["react-app", "plugin:prettier/recommended"]
+    }
+   ```
+
+   4.2. Install Prettier and Prettier integration for ESLint:
+   `npm i prettier eslint-config-prettier eslint-plugin-prettier -D`
+
+5. There are a few configurations to be made on VSCode JSON Settings - for that, see [this video](https://www.youtube.com/watch?v=bfyI9yl3qfE) by Manorisms.
+
+6. As for hosting checkout YuriBenjamin's [post](https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f)
+
+I wrote this mainly because I want to have a quick reference to look at. For full reference, see:
+
+- [React Tutorial on official documentation](https://reactjs.org/tutorial/tutorial.html)
+- [Github guide to adding existing projects to a remote repository](https://docs.github.com/en/github/importing-your-projects-to-github/adding-an-existing-project-to-github-using-the-command-line)
+- [ESLint and Prettier configuration on VSCode, by Manorisms](https://www.youtube.com/watch?v=bfyI9yl3qfE)
+- [GH-Pages Deployment](https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f)
+
+## More information
+
+- Made as a solution for the Frameworks Project in [The Odin Project](https://www.theodinproject.com/courses/javascript/lessons/frameworks)
+
+- [Web Local Storage API's Documentation](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API)
+
+- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
