@@ -2,17 +2,41 @@ import React from "react";
 
 import "./index.css";
 
-function Card(props) {
+import Library from "../../storage/Library";
+
+function Card({ bookObj, setBookLibrary }) {
+  const { title, author, pages, isRead, id } = bookObj;
+
+  function handleChange() {
+    Library.changeBookReadStatus(id);
+
+    setBookLibrary(Library.getAllBooks());
+  }
+
+  function handleDelete() {
+    Library.deleteBook(id);
+
+    setBookLibrary(Library.getAllBooks());
+  }
+
   return (
-    <div className="card newCard" id={`book${props.bookObj.id}`}>
-      <h2>{props.bookObj.title}</h2>
-      <h3>{props.bookObj.author}</h3>
-      <h4>{props.bookObj.pages} pages</h4>
+    <div className="card">
+      <h2>{title}</h2>
+      <h3>{author}</h3>
+      {pages && <h4>{pages} pages</h4>}
       <div className="checkbox">
         <label htmlFor="read-checkbox">read</label>
-        <input id="test" type="checkbox" name="read-checkbox" />
+        <input
+          id="test"
+          type="checkbox"
+          name="read-checkbox"
+          defaultChecked={isRead}
+          onChange={handleChange}
+        />
       </div>
-      <button className="btn-remove">delete</button>
+      <button onClick={handleDelete} className="btn-remove">
+        delete
+      </button>
     </div>
   );
 }
